@@ -1,0 +1,8 @@
+--- # writing in target section
+- name: installing httpd 
+  hosts: all
+  user: ansible
+  become: yes
+
+  roles:
+    - tsetroles  

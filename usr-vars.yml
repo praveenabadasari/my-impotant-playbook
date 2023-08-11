@@ -1,0 +1,15 @@
+ --- # 
+ - hosts: all
+   become: yes
+   
+
+   vars_files:
+     - usr.yml
+   
+   tasks:
+     - name: calling a {{user1}} 
+       user: 
+         name: "{{user1}}" 
+         
+
+

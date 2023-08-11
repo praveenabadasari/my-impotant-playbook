@@ -1,0 +1,19 @@
+--- # this is second method
+
+- name: installe sfotwere
+  hosts: webservers
+  user: ansible
+  become: yes
+  connection: ssh
+
+  tasks:
+    - name: install httpd sfotwere
+      yum:
+        name: httpd
+        state: latest
+
+    - name: start service httpd sfotwere
+      service:
+        name: httpd
+        state: started
+

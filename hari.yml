@@ -1,0 +1,17 @@
+--- # creating a file
+- hosts: all
+  user: ansible
+  become: yes
+  connection: ssh
+
+  tasks:
+    - name: creating file
+      file: path=/tmp/hari.txt state=file
+
+    - name: creating folder
+      file: path=/tmp/abcdir state=directory
+
+    - name: copying a file  from server to hosts
+      copy: src=./123xyz dest=/home/ansible
+
+

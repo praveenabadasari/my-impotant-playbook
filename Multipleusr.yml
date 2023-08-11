@@ -1,0 +1,15 @@
+--- # creating multiple users
+- hosts: all
+  become: yes
+
+
+  tasks:
+    - name: create multiple users
+      user: name='{{item}}' state=present
+      with_items:
+            - Ramesh
+            - seshu
+            - suresh
+            - sushanth
+            - nandini   
+        

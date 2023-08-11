@@ -1,0 +1,4 @@
+
+ name: installing httpd sfotwere
+ yum: pkg=httpd state=present
+

@@ -1,0 +1,38 @@
+--- # downoload and install jenkins sfotwere
+- name: download and install jenkins sfotwere 
+  hosts: all
+  user: ansible
+  become: yes
+  connection: ssh
+
+  tasks:
+    - name: install java sfotwere
+      yum: 
+        name: java
+        state: present
+
+    - name: install wget sfotwere
+      yum:
+        name: wget
+        state: present
+    
+    - name: download jenkins sfotwere
+      get_url:
+        url: https://pkg.jenkins.io/redhat-stable/jenkins.repo
+        dest: /etc/yum.repos.d/jenkins.repo
+
+    - name: download jenkins key
+      rpm_key:
+        state: present
+        key: https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+
+    - name: install jenkins sfotwere
+      yum:
+        name: jenkins
+        state: present
+
+    - name: start the srvice jenkins
+      service:
+        name: jenkins
+        state: started
+        enabled: yes       

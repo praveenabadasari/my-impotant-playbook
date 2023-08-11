@@ -1,0 +1,39 @@
+--- # one more condition
+- hosts: all
+  user: ansible
+  become: yes
+  connection: ssh
+
+
+  tasks:
+    - name: install httpd for redhat
+      yum:
+        name: httpd 
+        state: present
+      when: ansible_os_family == "RedHat"
+
+    - name: start httpd service
+      service:
+        name: httpd
+        state: started
+      when: ansible_os_family == "RedHat"
+
+    - name: install apache2 for debian
+      apt:
+        name: apache2
+        state: present
+      when: ansible_os_family == "Debian"
+    
+    - name: start apache2 service for debian
+      service:
+        name: apache2
+        state: present
+      when: ansible_os_family == "Debian"
+
+    - name: copy index.htmle file
+      copy:
+        src: /home/ansible/index.html
+        dest: /var/www/html
+    
+        
+          

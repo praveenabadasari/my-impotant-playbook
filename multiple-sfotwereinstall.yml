@@ -1,0 +1,14 @@
+--- # installing multiple sfotwers
+- name: install multiple sfotweres
+  hosts: all
+  user: ansible
+  become: yes
+  connection: ssh
+
+
+  tasks:
+    - name: multiple sfotwere install
+      yum:
+        name: ['git', 'java', 'docker', 'mysql', 'which', 'wget', 'tree', 'httpd'] 
+        state: present
+
